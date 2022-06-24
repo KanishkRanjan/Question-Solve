@@ -1,6 +1,7 @@
 # Fascinating Number
 
--   Difficulty Level : [Medium](https://www.geeksforgeeks.org/medium/)
+[Fasinating Number](https://www.geeksforgeeks.org/fascinating-number/)
+-   Difficulty Level : Medium
 -   Last Updated : 14 May, 2021
 
 Given a number N, the task is to check whether it is fascinating or not.   
@@ -32,127 +33,79 @@ Given a number N, the task is to check whether it is fascinating or not. 
 Below is the implementation of above approach:   
  
 
-`// C++ program to implement`
+```
+// C++ program to implement
+// fascinating number
+#include <bits/stdc++.h>
+using namespace std;
 
-`// fascinating number`
+// function to check if number
+// is fascinating or not
+bool isFascinating(int num)
+{
+	// frequency count array
+	// using 1 indexing
+	int freq[10] = {0};
 
-`#include <bits/stdc++.h>`
+	// obtaining the resultant number
+	// using string concatenation
+	string val = "" + to_string(num) +
+					to_string(num * 2) +
+					to_string(num * 3);
 
-`using` `namespace` `std;`
+	// Traversing the string
+	// character by character
+	for (int i = 0; i < val.length(); i++)
+	{
 
-`// function to check if number`
+		// gives integer value of
+		// a character digit
+		int digit = val[i] - '0';
 
-`// is fascinating or not`
+		// To check if any digit has
+		// appeared multiple times
+		if (freq[digit] and digit != 0 > 0)
+			return false;
+		else
+			freq[digit]++;
+	}
 
-`bool` `isFascinating(``int` `num)`
+	// Traversing through freq array to
+	// check if any digit was missing
+	for (int i = 1; i < 10; i++)
+	{
+		if (freq[i] == 0)
+			return false;
+	}
+	return true;
+}
 
-`{`
+// Driver code
+int main()
+{
+	// Input number
+	int num = 192;
 
-    `// frequency count array`
+	// Not a valid number
+	if (num < 100)
+		cout << "No" << endl;
 
-    `// using 1 indexing`
+	else
+	{
+		// Calling the function to
+		// check if input number
+		// is fascinating or not
+		bool ans = isFascinating(num);
+		if (ans)
+			cout << "Yes";
+		else
+			cout << "No";
+	}
+}
 
-    `int` `freq[10] = {0};`
-
-    `// obtaining the resultant number`
-
-    `// using string concatenation`
-
-    `string val =` `""` `+ to_string(num) +`
-
-                      `to_string(num * 2) +`
-
-                      `to_string(num * 3);`
-
-    `// Traversing the string`
-
-    `// character by character`
-
-    `for` `(``int` `i = 0; i < val.length(); i++)`
-
-    `{`
-
-        `// gives integer value of`
-
-        `// a character digit`
-
-        `int` `digit = val[i] -` `'0'``;`
-
-        `// To check if any digit has`
-
-        `// appeared multiple times`
-
-        `if` `(freq[digit] and digit != 0 > 0)`
-
-            `return` `false``;`
-
-        `else`
-
-            `freq[digit]++;`
-
-    `}`
-
-    `// Traversing through freq array to`
-
-    `// check if any digit was missing`
-
-    `for` `(``int` `i = 1; i < 10; i++)`
-
-    `{`
-
-        `if` `(freq[i] == 0)`
-
-            `return` `false``;`
-
-    `}`
-
-    `return` `true``;`
-
-`}`
-
-`// Driver code`
-
-`int` `main()`
-
-`{`
-
-    `// Input number`
-
-    `int` `num = 192;`
-
-    `// Not a valid number`
-
-    `if` `(num < 100)`
-
-        `cout <<` `"No"` `<< endl;`
-
-    `else`
-
-    `{`
-
-        `// Calling the function to`
-
-        `// check if input number`
-
-        `// is fascinating or not`
-
-        `bool` `ans = isFascinating(num);`
-
-        `if` `(ans)`
-
-            `cout <<` `"Yes"``;`
-
-        `else`
-
-            `cout <<` `"No"``;`
-
-    `}`
-
-`}`
-
-`// This code is contributed`
-
-`// by Subhadeep`
+// This code is contributed
+// by Subhadeep
+```
 
 **Output:** 
 
