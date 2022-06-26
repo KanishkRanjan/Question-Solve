@@ -1,0 +1,11 @@
+ 
+public:
+    int mod = 1e9+7;
+    int Maximize(int a[],int n)
+    {
+        sort(a,a+n);
+        unsigned long long int ans = 0;
+        for(int i=0;i<n;i++)
+            ans = (ans + ((unsigned long long)a[i]*i)%mod )%mod;
+        return ans;
+    }
